@@ -1,7 +1,7 @@
 // store the value of the input
 let city = $("#searchTerm").val();
 // store api key
-const apiKey = "&appid=afaa8eea1769b4359fd8e07b2efcefbd";
+const apiKey = "&appid=1a0d8629537110440965aa3936788ad4";
 let date = new Date();
 $("#searchTerm").keypress(function(event) { 
 	
