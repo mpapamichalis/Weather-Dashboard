@@ -1,6 +1,3 @@
-var Arr_Cities = [];
-var i = 0;
-
 
 $("button").on("click", function (event) {
     event.preventDefault();
@@ -19,12 +16,11 @@ $.ajax({
   }).then(function(response) {
     console.log(response);
 
-    $(".col-md").show();
+$(".col-md").show();
 $(".date1").text((response.list[4].dt_txt).split(" ", 1));
 var tempF1 = ((response.list[4].main.temp - 273.15) * 1.80 + 32).toFixed(2);
 var day1temp = $("<p>").text("Temp: " + tempF1 + "°F");
 var day1humidity = $("<p>").text("Humidity: " + response.list[4].main.humidity + "%");
-//icon
 var iconcode = response.list[4].weather[0].icon;
 var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
 $('#icon1').attr('src', iconurl);
@@ -89,31 +85,7 @@ $.ajax({
       
       var UVIndex = $(".UV-goes-here").addClass("card-text").text("UV Index: " + response.value);
     
-      var todayDate = $("<h5>").text((response.date_iso).split("T", 1));
-      cardBody.append(UVIndex);      
-      cityName.append(todayDate);
-      
-      if (response.value < 3){
-        $(".UV-goes-here").addClass("UV-color");
-      }
-      if (response.value >= 3 && response.value < 6){
-        $(".UV-goes-here").css("background-color", "yellow");
-        console.log(response.value);
-      }
-      if (response.value >= 6 && response.value < 8){
-        $(".UV-goes-here").css("background-color", "orange");
-        console.log(response.value);
-      }
-      if (response.value >= 8 && response.value < 11){
-        $(".UV-goes-here").css("background-color", "red");
-        $(".UV-goes-here").css("color", "white");
-        console.log(response.value);
-      }
-      if (response.value > 11){
-        $(".UV-goes-here").css("background-color", "purple");
-        $(".UV-goes-here").css("color", "white");
-        console.log(response.value);
-      }
+
   
   })
   
@@ -136,13 +108,6 @@ $.ajax({
 
 
 })
-var savedCities = localStorage.setItem("cityInput", JSON.stringify(cityInput));
-Arr_Cities.push(savedCities);
-JSON.parse(localStorage.getItem("cityInput"));
 
-
-for (i = 0; i < Arr_Cities.length; i++) { 
- $("ul").append("<li>").addClass("cityNames").text(Arr_Cities[i]);
-};
 
 });
